@@ -1,0 +1,18 @@
+datasource db {
+    url = env("DATABASE_URL")
+    provider = "postgres"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+    id                               Int         @id @default(autoincrement())
+    wallet_id                        String?
+    nonce                            String?
+
+    created_at                       DateTime    @default(now())
+    updated_at                       DateTime    @updatedAt
+    @@map(name: "users")
+}
